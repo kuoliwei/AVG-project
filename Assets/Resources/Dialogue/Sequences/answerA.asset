@@ -22,4 +22,12 @@ MonoBehaviour:
     backgroundOverride: {fileID: 0}
     clearCharacterCGBeforeLine: 0
     waitTime: 0
-  branchAfterSequence: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
+    content: "\u90A3\u9EBC\uFF0C\u653E\u5B78\u5F8C\u8981\u4E00\u8D77\u56DE\u5BB6\u55CE?"
+    position: 1
+    characterCgOverride: {fileID: 21300000, guid: d5cb52f1aacc50044b878a9df64cadf7, type: 3}
+    voiceClip: {fileID: 0}
+    backgroundOverride: {fileID: 0}
+    clearCharacterCGBeforeLine: 0
+    waitTime: 0
+  branchAfterSequence: {fileID: 11400000, guid: 043871434170eaf459681a3b9d095a02, type: 2}

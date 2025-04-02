@@ -15,12 +15,12 @@ public class DialoguePlayer : MonoBehaviour
 
     private void Start()
     {
-        LoadAllSequences(); // 自動從 Resources 資料夾載入全部劇情段
-        LoadFromSave(); // 根據 json 存檔內容跳到對應段落 / 句子
-        if (currentSequence == null && testSequence != null)
-        {
-            PlaySequence(testSequence); // 開始播放指定的劇情
-        }
+        //LoadAllSequences(); // 自動從 Resources 資料夾載入全部劇情段
+        //LoadFromSave(); // 根據 json 存檔內容跳到對應段落 / 句子
+        //if (currentSequence == null && testSequence != null)
+        //{
+        //    PlaySequence(testSequence); // 開始播放指定的劇情
+        //}
     }
 
     // 當前播放的對話資料（ScriptableObject 資料結構）
