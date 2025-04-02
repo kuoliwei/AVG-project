@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -13,7 +15,9 @@ public class DialoguePlayer : MonoBehaviour
 
     private void Start()
     {
-        if (testSequence != null)
+        LoadAllSequences(); // 自動從 Resources 資料夾載入全部劇情段
+        LoadFromSave(); // 根據 json 存檔內容跳到對應段落 / 句子
+        if (currentSequence == null && testSequence != null)
         {
             PlaySequence(testSequence); // 開始播放指定的劇情
         }
@@ -77,6 +81,26 @@ public class DialoguePlayer : MonoBehaviour
     [SerializeField] private DialogueOptionUI optionUI;
     [SerializeField] private CGController cgController;
     [SerializeField] private DualCGController dualCGController;
+    [SerializeField] private List<DialogueSequence> allSequences; // 所有段落可查詢
+    [ContextMenu("Auto Load All Sequences")]
+    public void LoadAllSequences()
+    {
+        allSequences = Resources.LoadAll<DialogueSequence>("Dialogue/Sequences").ToList();
+    }
+    public void LoadFromSave()
+    {
+        SaveData data = SaveManager.Instance.LoadProgress();
+        if (data == null) return;
+
+        DialogueSequence found = allSequences.Find(seq => seq.name == data.sequenceName);
+        if (found != null)
+        {
+            currentSequence = found;
+            currentLineIndex = data.lineIndex;
+            currentState = DialogueState.Playing;
+            PlayNextLine();
+        }
+    }
     /// <summary>
     /// 播放下一句對話，並進入等待輸入狀態
     /// 若已達最後一行，則轉入結束處理
@@ -91,6 +115,10 @@ public class DialoguePlayer : MonoBehaviour
         }
         // 取得目前要播放的對話資料（封裝：從資料結構讀取）
         DialogueLine line = currentSequence.lines[currentLineIndex];
+        // 播放前先儲存進度
+        SaveManager.Instance.SaveProgress(currentSequence.name, currentLineIndex);
+
+        // 原本播放邏輯不變...
         // 角色立繪控制
         if (dualCGController != null && line.speaker != null)
         {

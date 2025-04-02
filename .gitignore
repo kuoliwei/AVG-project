@@ -52,3 +52,6 @@ Thumbs.db
 
 # Windows Explorer file
 desktop.ini
+
+# Visual Studio workfile
+.vs/
