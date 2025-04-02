@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "F:\\project\\AVG-project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|f:\\project\\avg-project\\assets\\scripts\\dialoguesystem\\dialoguebranch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|f:\\project\\avg-project\\assets\\scripts\\core\\dualcgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\dualcgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|f:\\project\\avg-project\\assets\\scripts\\dialoguesystem\\dialoguecharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialoguecharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\dialoguesystem\\dialogueui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialogueui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\dialoguesystem\\dialogueoptionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialogueoptionui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\dialoguesystem\\dialoguebranch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialoguebranch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|f:\\project\\avg-project\\assets\\scripts\\dialoguesystem\\dialogueoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialogueoption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\dialoguesystem\\dialogueplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialogueplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\core\\cgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\cgcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\dialoguesystem\\dialogueline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialogueline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|F:\\project\\AVG-project\\assets\\scripts\\dialoguesystem\\dialoguecharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC1DC15A-78BA-3857-612C-705116722A99}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dialoguesystem\\dialoguecharacter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,6 +47,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DualCGController.cs",
+              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\Core\\DualCGController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\DualCGController.cs",
+              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\Core\\DualCGController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\DualCGController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T04:08:18.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DialogueCharacter.cs",
+              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
+              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T03:45:51.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DialogueUI.cs",
+              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueUI.cs",
+              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEsAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T15:26:39.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DialogueOptionUI.cs",
+              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueOptionUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueOptionUI.cs",
+              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueOptionUI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueOptionUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T14:11:00.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DialogueBranch.cs",
               "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueBranch.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueBranch.cs",
@@ -38,45 +106,47 @@
               "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueBranch.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T15:21:08.987Z",
+              "WhenOpened": "2025-04-01T14:04:39.849Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DialogueOption.cs",
-              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueOption.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueOption.cs",
-              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueOption.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueOption.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "DialoguePlayer.cs",
+              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialoguePlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialoguePlayer.cs",
+              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialoguePlayer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialoguePlayer.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAQwGQAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T15:12:47.442Z",
+              "WhenOpened": "2025-04-01T13:19:10.004Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "CGController.cs",
+              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\Core\\CGController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\CGController.cs",
+              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\Core\\CGController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\CGController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T12:33:57.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "DialogueLine.cs",
               "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueLine.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueLine.cs",
               "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueLine.cs",
               "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueLine.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T14:58:14.91Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DialogueCharacter.cs",
-              "DocumentMoniker": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
-              "ToolTip": "F:\\project\\AVG-project\\Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
-              "RelativeToolTip": "Assets\\Scripts\\DialogueSystem\\DialogueCharacter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T14:52:23.544Z"
+              "WhenOpened": "2025-04-01T12:08:29.419Z",
+              "EditorCaption": ""
             }
           ]
         }

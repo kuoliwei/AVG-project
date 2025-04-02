@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84610f69073d1f44ebb9a0e0473e33c8, type: 3}
+  m_Name: introduce
+  m_EditorClassIdentifier: 
+  sequenceName: introduce
+  lines:
+  - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
+    content: "\u521D\u6B21\u898B\u9762"
+    position: 1
+    characterCgOverride: {fileID: 0}
+    voiceClip: {fileID: 0}
+    backgroundOverride: {fileID: 0}
+    clearCharacterCGBeforeLine: 0
+    waitTime: 0
+  - speaker: {fileID: 11400000, guid: 6faff0530bf9a1446aacf9ab9dcb7f17, type: 2}
+    content: "\u521D\u6B21\u898B\u9762"
+    position: 0
+    characterCgOverride: {fileID: 0}
+    voiceClip: {fileID: 0}
+    backgroundOverride: {fileID: 0}
+    clearCharacterCGBeforeLine: 0
+    waitTime: 0
+  - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
+    content: "\u6211\u662F\u611B\u9E97\u7D72"
+    position: 1
+    characterCgOverride: {fileID: 0}
+    voiceClip: {fileID: 0}
+    backgroundOverride: {fileID: 0}
+    clearCharacterCGBeforeLine: 0
+    waitTime: 0
+  - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
+    content: "\u4F60\u53EB\u4EC0\u9EBC\u540D\u5B50\u5462"
+    position: 1
+    characterCgOverride: {fileID: 21300000, guid: d5cb52f1aacc50044b878a9df64cadf7, type: 3}
+    voiceClip: {fileID: 0}
+    backgroundOverride: {fileID: 0}
+    clearCharacterCGBeforeLine: 0
+    waitTime: 0
+  branchAfterSequence: {fileID: 11400000, guid: d1b2609cd7079ab40af410b81bc30f17, type: 2}
