@@ -17,7 +17,8 @@ public class DialogueLine
     public CharacterPosition position = CharacterPosition.Left; // 此句話要顯示在哪一邊
     public Sprite characterCgOverride; // 若有特殊 CG 圖，可在該句切換（封裝）
     public AudioClip voiceClip; // 搭配語音素材播放（封裝）
-    public Sprite backgroundOverride; // ← 新增：指定此句對應的背景圖
+    public string backgroundKeyOverride; // 使用文字代號指定背景 CG
+    //public Sprite backgroundOverride; // ← 新增：指定此句對應的背景圖
     public bool clearCharacterCGBeforeLine = false;
     public float waitTime = 0.5f; // 播放完該句後等待時間（封裝）
 }

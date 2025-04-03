@@ -3,10 +3,16 @@ using UnityEngine.UI;
 
 public class ChapterMenuUI : MonoBehaviour
 {
-    public ChapterList chapterList;
-    public GameObject buttonPrefab;
+    [Header("資料來源")]
+    public ChapterList chapterList;               // 包含所有章節的 ScriptableObject
+    [Header("UI 連結")]
+    public GameObject buttonPrefab;               // 一個章節用的按鈕 prefab
     public Transform buttonParent;
-    public DialoguePlayer dialoguePlayer;
+    [Header("UI 面板控制")]
+    public GameObject chapterMenuPanel;           // 章節面板（本身）
+    public GameObject dialoguePanel;              // 對話面板（播劇情用）// 放置所有章節按鈕的容器
+    [Header("對話播放器")]
+    public DialoguePlayer dialoguePlayer;         // 控制劇情播放
 
     private void Start()
     {
@@ -14,12 +20,19 @@ public class ChapterMenuUI : MonoBehaviour
         {
             GameObject btnObj = Instantiate(buttonPrefab, buttonParent);
             var btn = btnObj.GetComponent<Button>();
+            // 設定按鈕文字
             btn.GetComponentInChildren<Text>().text = chapter.chapterTitle;
 
             btn.onClick.AddListener(() =>
             {
-                gameObject.SetActive(false); // 關閉選單
-                dialoguePlayer.PlaySequence(chapter.startingSequence); // 播放章節
+                // 關閉章節選單面板
+                chapterMenuPanel.SetActive(false);
+
+                // 顯示對話面板
+                dialoguePanel.SetActive(true);
+
+                // 播放該章節的第一段對話
+                dialoguePlayer.PlaySequence(chapter.startingSequence);
             });
         }
     }

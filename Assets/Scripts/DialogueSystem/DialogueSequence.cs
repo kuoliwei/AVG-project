@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class DialogueSequence : ScriptableObject // 封裝劇情資料結構
 {
     public string sequenceName; // 序列名稱，方便識別（封裝）
-
+    public string backgroundKey;
     [Header("對話內容")]
     [Tooltip("這段劇情中要播放的所有對話句子")]
     public List<DialogueLine> lines; // 這段對話的所有句子（封裝 + 組合）

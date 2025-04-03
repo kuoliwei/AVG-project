@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: answerB
   m_EditorClassIdentifier: 
   sequenceName: answerA
+  backgroundKey: "\u6559\u5BA4"
   lines:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
     content: "\u963F\u74DC\uFF0C\u771F\u662F\u5947\u602A\u7684\u540D\u5B50"
     position: 1
     characterCgOverride: {fileID: 21300000, guid: 595a66a1219a25644baf7568b479d58c, type: 3}
     voiceClip: {fileID: 0}
+    backgroundKey: 
     backgroundOverride: {fileID: 0}
     clearCharacterCGBeforeLine: 0
     waitTime: 0
@@ -27,6 +29,7 @@ MonoBehaviour:
     position: 1
     characterCgOverride: {fileID: 21300000, guid: d5cb52f1aacc50044b878a9df64cadf7, type: 3}
     voiceClip: {fileID: 0}
+    backgroundKey: 
     backgroundOverride: {fileID: 0}
     clearCharacterCGBeforeLine: 0
     waitTime: 0

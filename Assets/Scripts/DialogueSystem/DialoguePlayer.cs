@@ -50,7 +50,7 @@ public class DialoguePlayer : MonoBehaviour
     // 此處先不連結 UI，改以 Debug.Log 方式顯示結果
     [Header("Console Output")]
     public bool autoPrintToConsole = true;
-
+    private string currentBackgroundKey;
     /// <summary>
     /// 啟動播放指定的對話序列
     /// 此為對外介面（例如由 UI 呼叫）
@@ -73,7 +73,11 @@ public class DialoguePlayer : MonoBehaviour
 
         // 將狀態設定為播放中
         currentState = DialogueState.Playing;
-
+        if (backgroundManager != null && !string.IsNullOrEmpty(currentSequence.backgroundKey) && currentSequence.backgroundKey != currentBackgroundKey)
+        {
+            backgroundManager.ChangeBackground(currentSequence.backgroundKey);
+            currentBackgroundKey = currentSequence.backgroundKey;
+        }
         // 播放第一句內容（索引為 0）
         PlayNextLine();
     }
@@ -101,6 +105,7 @@ public class DialoguePlayer : MonoBehaviour
             PlayNextLine();
         }
     }
+    [SerializeField] private BackgroundManager backgroundManager;
     /// <summary>
     /// 播放下一句對話，並進入等待輸入狀態
     /// 若已達最後一行，則轉入結束處理
@@ -117,6 +122,19 @@ public class DialoguePlayer : MonoBehaviour
         DialogueLine line = currentSequence.lines[currentLineIndex];
         // 播放前先儲存進度
         SaveManager.Instance.SaveProgress(currentSequence.name, currentLineIndex);
+        if (backgroundManager != null && !string.IsNullOrEmpty(line.backgroundKeyOverride) && line.backgroundKeyOverride != currentBackgroundKey)
+        {
+            backgroundManager.ChangeBackground(line.backgroundKeyOverride);
+            currentBackgroundKey = line.backgroundKeyOverride;
+        }
+        else
+        {
+            if (backgroundManager != null && !string.IsNullOrEmpty(currentSequence.backgroundKey) && currentSequence.backgroundKey != currentBackgroundKey)
+            {
+                backgroundManager.ChangeBackground(currentSequence.backgroundKey);
+                currentBackgroundKey = currentSequence.backgroundKey;
+            }
+        }
 
         // 原本播放邏輯不變...
         // 角色立繪控制
@@ -129,11 +147,11 @@ public class DialoguePlayer : MonoBehaviour
             dualCGController.ShowCharacter(line.speaker, true, line.position, portraitToUse);
             dualCGController.DimAt(otherSide);
         }
-        if (cgController != null)
-        {
-            if (line.backgroundOverride != null)
-                cgController.ShowBackground(line.backgroundOverride);
-        }
+        //if (cgController != null)
+        //{
+        //    if (line.backgroundOverride != null)
+        //        cgController.ShowBackground(line.backgroundOverride);
+        //}
         if (dialogueUI != null)
         {
             dialogueUI.SetLine(line);
