@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -78,12 +80,17 @@ public class DialoguePlayer : MonoBehaviour
             backgroundManager.ChangeBackground(currentSequence.backgroundKey);
             currentBackgroundKey = currentSequence.backgroundKey;
         }
-        // 播放第一句內容（索引為 0）
-        PlayNextLine();
+        // 等待指定時間後開始第一句
+        StartCoroutine(DelayedPlay(currentSequence.sequenceStartDelay, PlayNextLine));
+    }
+    private IEnumerator DelayedPlay(float delay, Action function)
+    {
+        yield return new WaitForSeconds(delay);
+        function.Invoke();
     }
     [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private DialogueOptionUI optionUI;
-    [SerializeField] private CGController cgController;
+    //[SerializeField] private CGController cgController;
     [SerializeField] private DualCGController dualCGController;
     [SerializeField] private List<DialogueSequence> allSequences; // 所有段落可查詢
     [ContextMenu("Auto Load All Sequences")]
@@ -143,8 +150,9 @@ public class DialoguePlayer : MonoBehaviour
             if (line.clearCharacterCGBeforeLine)
                 dualCGController.ClearAll();
             CharacterPosition otherSide = line.position == CharacterPosition.Left ? CharacterPosition.Right : CharacterPosition.Left;
-            Sprite portraitToUse = line.characterCgOverride != null ? line.characterCgOverride : line.speaker.portrait;
-            dualCGController.ShowCharacter(line.speaker, true, line.position, portraitToUse);
+            string portraitKeyToUse = line.charactersPortraitsKeyOverride != "none" ? line.charactersPortraitsKeyOverride : line.speaker.defaultPortraitKey;
+            Debug.Log(line.speaker.defaultPortraitKey);
+            dualCGController.ShowCharacter(line.speaker, true, line.position, portraitKeyToUse);
             dualCGController.DimAt(otherSide);
         }
         //if (cgController != null)
@@ -154,6 +162,8 @@ public class DialoguePlayer : MonoBehaviour
         //}
         if (dialogueUI != null)
         {
+            //StartCoroutine(DelayedPlay(line.lineStartDelay, () => dialogueUI.SetLine(line)));
+            dialogueUI.Clear();
             dialogueUI.SetLine(line);
         }
         // 若啟用 Console 模擬輸出，則印出角色與對話內容

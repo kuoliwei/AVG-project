@@ -34,7 +34,7 @@ public class DialogueUI : MonoBehaviour
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(TypeText(fullText));
+        typingCoroutine = StartCoroutine(TypeText(fullText, line.lineStartDelay));
     }
     /// <summary>
     /// 顯示完整對話，不再逐字
@@ -64,10 +64,11 @@ public class DialogueUI : MonoBehaviour
     /// <summary>
     /// 執行逐字輸出效果
     /// </summary>
-    private IEnumerator TypeText(string text)
+    private IEnumerator TypeText(string text, float delay)
     {
         contentText.text = "";
         isTyping = true;
+        yield return new WaitForSeconds(delay);
         continueHint.SetActive(false);
 
         foreach (char c in text)

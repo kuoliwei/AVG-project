@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e632881aeb87494397b75cf5df85eae, type: 3}
+  m_Name: Alice
+  m_EditorClassIdentifier: 
+  CharactersPortraits:
+  - key: normal
+    CharactersPortrait: {fileID: 21300000, guid: e55c280273daf6f4f95f454e8265a3bb, type: 3}
+  - key: shy
+    CharactersPortrait: {fileID: 21300000, guid: d5cb52f1aacc50044b878a9df64cadf7, type: 3}
+  - key: angry and shy
+    CharactersPortrait: {fileID: 21300000, guid: 595a66a1219a25644baf7568b479d58c, type: 3}

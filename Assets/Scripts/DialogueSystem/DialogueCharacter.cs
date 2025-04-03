@@ -7,9 +7,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewCharacter", menuName = "AVG/Character")]
 public class DialogueCharacter : ScriptableObject // 透過繼承 Unity 的 ScriptableObject 使資料可獨立儲存於資產中
 {
-
     public string characterName; // 角色名稱（封裝）
-    public Sprite portrait; // 角色立繪圖片（封裝）
+    //public Sprite portrait; // 角色立繪圖片（封裝）
+    public string defaultPortraitKey;  // 預設角色立繪圖片key（封裝）
+    public CharactersPortraitDatabase portraitDatabase; // 角色立繪圖片database（封裝）
     public Color nameColor = Color.white; // 對話框顯示的名稱顏色，預設為白色（封裝）
     //public CharacterPosition defaultPosition = CharacterPosition.Left; // 預設站位
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae657b0efe1280648bd12b43a5a0c3a7, type: 3}
   m_Name: Me
   m_EditorClassIdentifier: 
-  characterName: Me
-  portrait: {fileID: 21300000, guid: 042953661f42d904881e6d2f555441e3, type: 3}
+  characterName: "\u6211"
+  defaultPortraitKey: normal
+  portraitDatabase: {fileID: 11400000, guid: b8685443ab9a52d4c87b6b14dcb2feb3, type: 2}
   nameColor: {r: 1, g: 1, b: 1, a: 1}

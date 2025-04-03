@@ -17,7 +17,7 @@ public class DualCGController : MonoBehaviour
     /// <summary>
     /// 顯示一個角色立繪，並根據其站位與是否為說話者設定圖像與亮度
     /// </summary>
-    public void ShowCharacter(DialogueCharacter character, bool isSpeaking, CharacterPosition position, Sprite overridePortrait = null)
+    public void ShowCharacter(DialogueCharacter character, bool isSpeaking, CharacterPosition position, string portraitKey)
     {
         if (character == null) return;
 
@@ -25,7 +25,7 @@ public class DualCGController : MonoBehaviour
         if (target != null)
         {
             target.enabled = true;
-            target.sprite = overridePortrait != null ? overridePortrait : character.portrait;
+            target.sprite = character.portraitDatabase.GetCharactersPortraitByKey(portraitKey);
             SetAlpha(target, isSpeaking ? normalAlpha : dimAlpha);
         }
     }

@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae657b0efe1280648bd12b43a5a0c3a7, type: 3}
-  m_Name: Alice
+  m_Script: {fileID: 11500000, guid: 8e632881aeb87494397b75cf5df85eae, type: 3}
+  m_Name: Me
   m_EditorClassIdentifier: 
-  characterName: "\u827E\u8389\u7D72"
-  defaultPortraitKey: normal
-  portraitDatabase: {fileID: 11400000, guid: f6306aced0068ad4c8be0885e5155cd5, type: 2}
-  nameColor: {r: 0, g: 0.9384773, b: 1, a: 1}
+  CharactersPortraits:
+  - key: normal
+    CharactersPortrait: {fileID: 21300000, guid: 042953661f42d904881e6d2f555441e3, type: 3}
