@@ -17,7 +17,7 @@ MonoBehaviour:
   sequenceStartDelay: 1
   lines:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
-    content: "\u90A3\u500B\uFF0C\u4F60\u5BB6\u4F4F\u54EA\u88E1\u5462?"
+    content: "\u90A3\u500B\uFF0C<wait=1>\u4F60\u5BB6\u4F4F\u54EA\u88E1\u5462?"
     position: 1
     charactersPortraitsKeyOverride: shy
     voiceClip: {fileID: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   - speaker: {fileID: 11400000, guid: 6faff0530bf9a1446aacf9ab9dcb7f17, type: 2}
-    content: "\u9644\u8FD1\u800C\u5DF2\uFF0C\u5341\u5E7E\u5206\u9418\u5C31\u5230\u4E86"
+    content: "\u9644\u8FD1\u800C\u5DF2\uFF0C<wait=1>\u5341\u5E7E\u5206\u9418\u5C31\u5230\u4E86"
     position: 0
     charactersPortraitsKeyOverride: none
     voiceClip: {fileID: 0}
