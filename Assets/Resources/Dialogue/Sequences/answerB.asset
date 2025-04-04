@@ -17,7 +17,7 @@ MonoBehaviour:
   sequenceStartDelay: 1
   lines:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
-    content: "\u963F\u74DC\uFF0C<wait=1>\u771F\u662F\u5947\u602A\u7684\u540D\u5B50"
+    content: "<b><color=#ff0000>\u963F\u74DC</color></b>?<wait=1>\u771F\u662F\u5947\u602A\u7684\u540D\u5B50"
     position: 1
     charactersPortraitsKeyOverride: angry and shy
     voiceClip: {fileID: 0}

@@ -25,7 +25,7 @@ MonoBehaviour:
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
-    content: "\u7B28\u86CB!\n<wait=0.5>\u6211\u5011\u9084\u6C92\u9019\u9EBC\u719F"
+    content: "<speed=0.5><b><color=#ff0000>\u7B28\u86CB!</color></b><speed=0.15>\n<wait=0.5>\u6211\u5011\u9084\u6C92\u9019\u9EBC\u719F"
     position: 1
     charactersPortraitsKeyOverride: angry and shy
     voiceClip: {fileID: 0}

@@ -33,7 +33,7 @@ MonoBehaviour:
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
-    content: "\u6211\u662F\u611B\u9E97\u7D72"
+    content: "\u6211\u662F<b><color=#ff0000>\u827E\u8389\u7D72</color></b>"
     position: 1
     charactersPortraitsKeyOverride: none
     voiceClip: {fileID: 0}
