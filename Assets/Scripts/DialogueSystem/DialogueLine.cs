@@ -16,10 +16,10 @@ public class DialogueLine
     public string content; // 對話內容，允許換行（封裝）
     public CharacterPosition position = CharacterPosition.Left; // 此句話要顯示在哪一邊
     [PortraitKeyDropdown]
-    public string charactersPortraitsKeyOverride; // 若有特殊 CG 圖，可在該句切換（封裝）
+    public string charactersPortraitsKeyOverride; // 若有特殊人物 CG 圖，可在該句切換（封裝）
     public AudioClip voiceClip; // 搭配語音素材播放（封裝）
-    public string backgroundKeyOverride; // 使用文字代號指定背景 CG
-    //public Sprite backgroundOverride; // ← 新增：指定此句對應的背景圖
+    [BackgroundKeyDropdown]
+    public string backgroundKeyOverride; // 若有特殊背景 CG 圖，可在該句切換（封裝）
     public bool clearCharacterCGBeforeLine = false;
     [Header("該句播放前延遲時間（秒）")]
     public float lineStartDelay = 0.5f; // 該句播放前延遲時間（秒）

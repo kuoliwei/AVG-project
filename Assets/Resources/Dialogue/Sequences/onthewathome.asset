@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequenceName: onthewathome
   backgroundKey: "\u4F4F\u5B85\u5340\u8857\u9053"
+  backgroundDatabase: {fileID: 11400000, guid: 1ee3cc2c695693445918385ca9712304, type: 2}
   sequenceStartDelay: 1
   lines:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
@@ -21,7 +22,7 @@ MonoBehaviour:
     position: 1
     charactersPortraitsKeyOverride: shy
     voiceClip: {fileID: 0}
-    backgroundKeyOverride: 
+    backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   - speaker: {fileID: 11400000, guid: 6faff0530bf9a1446aacf9ab9dcb7f17, type: 2}
@@ -29,7 +30,7 @@ MonoBehaviour:
     position: 0
     charactersPortraitsKeyOverride: none
     voiceClip: {fileID: 0}
-    backgroundKeyOverride: 
+    backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   branchAfterSequence: {fileID: 11400000, guid: e348c61389713f4469d7a94147c0ce5e, type: 2}

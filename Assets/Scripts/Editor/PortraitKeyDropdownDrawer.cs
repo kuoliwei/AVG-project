@@ -19,18 +19,20 @@ public class PortraitKeyDropdownDrawer : PropertyDrawer
 
         // 從 speaker 中取出對應的 DialogueCharacter
         DialogueCharacter speaker = speakerProp != null ? speakerProp.objectReferenceValue as DialogueCharacter : null;
-
+        //Debug.Log(speakerProp);
         // 從 speaker 拿到 portraitDatabase，如果沒有則為 null
         CharactersPortraitDatabase database = speaker != null ? speaker.portraitDatabase : null;
-
+        // 若無資料庫，則顯示為普通輸入欄位
+        if (database == null)
+        {
+            property.stringValue = EditorGUI.TextField(position, label.text, property.stringValue);
+            return;
+        }
         // 建立一個 portrait key 的清單，預設第一個是空字串（代表不覆蓋、使用預設圖）
         var keys = new System.Collections.Generic.List<string> { "none" };
 
         // 如果有指定 database，就從中取得所有的 key，加入清單
-        if (database != null)
-        {
-            keys.AddRange(database.CharactersPortraits.Select(p => p.key)); // 用 LINQ 選出所有 key
-        }
+        keys.AddRange(database.CharactersPortraits.Select(p => p.key)); // 用 LINQ 選出所有 key
 
         // 正確比對目前欄位值的位置（允許 ""）
         int selectedIndex = keys.IndexOf(property.stringValue);

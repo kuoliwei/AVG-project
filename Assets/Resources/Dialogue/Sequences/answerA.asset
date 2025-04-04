@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequenceName: answerA
   backgroundKey: "\u6559\u5BA4"
+  backgroundDatabase: {fileID: 11400000, guid: 1ee3cc2c695693445918385ca9712304, type: 2}
   sequenceStartDelay: 1
   lines:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
@@ -21,7 +22,7 @@ MonoBehaviour:
     position: 1
     charactersPortraitsKeyOverride: angry and shy
     voiceClip: {fileID: 0}
-    backgroundKeyOverride: 
+    backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
@@ -29,7 +30,7 @@ MonoBehaviour:
     position: 1
     charactersPortraitsKeyOverride: shy
     voiceClip: {fileID: 0}
-    backgroundKeyOverride: 
+    backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
   branchAfterSequence: {fileID: 11400000, guid: 043871434170eaf459681a3b9d095a02, type: 2}
