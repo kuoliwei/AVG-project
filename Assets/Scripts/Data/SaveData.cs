@@ -1,8 +1,9 @@
-using System;
-
-[Serializable]
+[System.Serializable]
 public class SaveData
 {
-    public string sequenceName;   // 對話段落（ScriptableObject 的 name）
-    public int lineIndex;         // 第幾句對話
+    public string sequenceName;
+    public int lineIndex;
+
+    public string displayName;     // 顯示用（如「第 2 章 - 教室」）
+    public string savedAt;         // 儲存時間（字串型）
 }

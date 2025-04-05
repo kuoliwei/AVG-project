@@ -1,23 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
-    public GameObject mainMenuPanel;
-    public GameObject chapterMenuPanel;
-    public GameObject dialoguePanel;
     public DialoguePlayer dialoguePlayer;
+    public SaveLoadUI saveLoadUI;
+
     private void Start()
     {
-        mainMenuPanel.SetActive(true);
-        chapterMenuPanel.SetActive(false);
-        dialoguePanel.SetActive(false);
+        // 一開始顯示主選單
+        UIManager.Instance.ShowUI(UIType.MainMenu);
+        saveLoadUI.Init();
     }
+
     public void OnStartButton()
     {
-        mainMenuPanel.SetActive(false);
-        dialoguePanel.SetActive(true);
-        // 播放預設劇情段落（testSequence）
+        UIManager.Instance.ShowUI(UIType.Gaming);
+
         if (dialoguePlayer != null && dialoguePlayer.testSequence != null)
         {
             dialoguePlayer.PlaySequence(dialoguePlayer.testSequence);
@@ -26,13 +24,13 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnChapterButton()
     {
-        mainMenuPanel.SetActive(false);
-        chapterMenuPanel.SetActive(true);
+        UIManager.Instance.ShowUI(UIType.ChapterMenu);
     }
 
     public void OnOptionsButton()
     {
         Debug.Log("尚未實作選項功能");
+        // 若未來實作 Options UI，可加 UIType.Options
     }
 
     public void OnQuitButton()
@@ -42,5 +40,10 @@ public class MainMenuUI : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+    public void OnLoadClicked()
+    {
+        saveLoadUI.SetReturnTarget(UIType.MainMenu);
+        saveLoadUI.Show(SaveLoadUI.Mode.Load);
     }
 }

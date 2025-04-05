@@ -17,8 +17,7 @@ public class DialoguePlayer : MonoBehaviour
 
     private void Start()
     {
-        //LoadAllSequences(); // 自動從 Resources 資料夾載入全部劇情段
-        //LoadFromSave(); // 根據 json 存檔內容跳到對應段落 / 句子
+        LoadAllSequences(); // 自動從 Resources 資料夾載入全部劇情段
         //if (currentSequence == null && testSequence != null)
         //{
         //    PlaySequence(testSequence); // 開始播放指定的劇情
@@ -98,20 +97,7 @@ public class DialoguePlayer : MonoBehaviour
     {
         allSequences = Resources.LoadAll<DialogueSequence>("Dialogue/Sequences").ToList();
     }
-    public void LoadFromSave()
-    {
-        SaveData data = SaveManager.Instance.LoadProgress();
-        if (data == null) return;
 
-        DialogueSequence found = allSequences.Find(seq => seq.name == data.sequenceName);
-        if (found != null)
-        {
-            currentSequence = found;
-            currentLineIndex = data.lineIndex;
-            currentState = DialogueState.Playing;
-            PlayNextLine();
-        }
-    }
     [SerializeField] private BackgroundManager backgroundManager;
     /// <summary>
     /// 播放下一句對話，並進入等待輸入狀態
@@ -127,20 +113,17 @@ public class DialoguePlayer : MonoBehaviour
         }
         // 取得目前要播放的對話資料（封裝：從資料結構讀取）
         DialogueLine line = currentSequence.lines[currentLineIndex];
-        // 播放前先儲存進度
-        SaveManager.Instance.SaveProgress(currentSequence.name, currentLineIndex);
-        if (backgroundManager != null && !string.IsNullOrEmpty(line.backgroundKeyOverride) && line.backgroundKeyOverride != currentBackgroundKey)
+        if (backgroundManager != null && !string.IsNullOrEmpty(line.backgroundKeyOverride) && line.backgroundKeyOverride != "none" && line.backgroundKeyOverride != currentBackgroundKey)
         {
+            Debug.Log(line.backgroundKeyOverride + ", " +currentBackgroundKey);
             backgroundManager.ChangeBackground(line.backgroundKeyOverride);
             currentBackgroundKey = line.backgroundKeyOverride;
         }
-        else
+        else if (backgroundManager != null && !string.IsNullOrEmpty(line.backgroundKeyOverride) && line.backgroundKeyOverride == "none" && currentBackgroundKey != currentSequence.backgroundKey)
         {
-            if (backgroundManager != null && !string.IsNullOrEmpty(currentSequence.backgroundKey) && currentSequence.backgroundKey != currentBackgroundKey)
-            {
-                backgroundManager.ChangeBackground(currentSequence.backgroundKey);
-                currentBackgroundKey = currentSequence.backgroundKey;
-            }
+            Debug.Log(currentBackgroundKey + ", " + currentSequence.backgroundKey);
+            backgroundManager.ChangeBackground(currentSequence.backgroundKey);
+            currentBackgroundKey = currentSequence.backgroundKey;
         }
 
         // 原本播放邏輯不變...
@@ -151,15 +134,10 @@ public class DialoguePlayer : MonoBehaviour
                 dualCGController.ClearAll();
             CharacterPosition otherSide = line.position == CharacterPosition.Left ? CharacterPosition.Right : CharacterPosition.Left;
             string portraitKeyToUse = line.charactersPortraitsKeyOverride != "none" ? line.charactersPortraitsKeyOverride : line.speaker.defaultPortraitKey;
-            Debug.Log(line.speaker.defaultPortraitKey);
+            //Debug.Log(line.speaker.defaultPortraitKey);
             dualCGController.ShowCharacter(line.speaker, true, line.position, portraitKeyToUse);
             dualCGController.DimAt(otherSide);
         }
-        //if (cgController != null)
-        //{
-        //    if (line.backgroundOverride != null)
-        //        cgController.ShowBackground(line.backgroundOverride);
-        //}
         if (dialogueUI != null)
         {
             //StartCoroutine(DelayedPlay(line.lineStartDelay, () => dialogueUI.SetLine(line)));
@@ -170,7 +148,7 @@ public class DialoguePlayer : MonoBehaviour
         if (autoPrintToConsole && line != null && line.speaker != null)
         {
             // 注意：這裡輸出僅使用 ASCII 字元，避免 Unicode 儲存錯誤
-            Debug.Log("[Speaker]: " + line.speaker.name + " / [Content]: " + line.content);
+            //Debug.Log("[Speaker]: " + line.speaker.name + " / [Content]: " + line.content);
         }
 
         // TODO：可在這裡播放語音、CG 切換、立繪等效果（資料導向）
@@ -213,11 +191,11 @@ public class DialoguePlayer : MonoBehaviour
             currentState = DialogueState.ShowingBranch;
 
             // 顯示選項問題與各選項（僅在 Console 輸出）
-            Debug.Log("[Branch] Question: " + currentSequence.branchAfterSequence.question);
+            //Debug.Log("[Branch] Question: " + currentSequence.branchAfterSequence.question);
 
             foreach (var option in currentSequence.branchAfterSequence.options)
             {
-                Debug.Log("[Option] " + option.optionText + " -> Next: " + option.nextSequence?.name);
+                //Debug.Log("[Option] " + option.optionText + " -> Next: " + option.nextSequence?.name);
             }
 
             // 等待玩家從 UI 選擇
@@ -245,7 +223,7 @@ public class DialoguePlayer : MonoBehaviour
         // 確保狀態正確、資料不為 null
         if (currentState != DialogueState.ShowingBranch || selectedOption == null) return;
 
-        Debug.Log("Selected option: " + selectedOption.optionText);
+        //Debug.Log("Selected option: " + selectedOption.optionText);
 
         // 清除舊選項 UI
         if (optionUI != null)
@@ -255,16 +233,21 @@ public class DialoguePlayer : MonoBehaviour
         // 重新開始播放選項對應的新序列
         PlaySequence(selectedOption.nextSequence);
     }
+
+    public string CurrentSequenceName => currentSequence != null ? currentSequence.name : "";
+    public DialogueSequence CurrentSequence => currentSequence;
+    public int CurrentLineIndex => currentLineIndex;
     /// <summary>
-    /// 每幀執行一次，這裡用來偵測按鍵輸入（測試用）
-    /// 正式版可用 UI 按鈕代替
+    /// 根據名稱跳到指定段落
     /// </summary>
-    private void Update()
+    public void LoadSequenceByName(string name, int lineIndex)
     {
-        // 按下空白鍵時，推進對話
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        DialogueSequence found = allSequences.Find(seq => seq.name == name);
+        if (found != null)
         {
-            Continue();
+            PlaySequence(found);
+            currentLineIndex = lineIndex;
+            PlayNextLine();
         }
     }
 }

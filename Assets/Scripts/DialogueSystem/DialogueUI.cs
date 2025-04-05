@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// DialogueUI 負責更新 UI 上的對話顯示內容
@@ -196,5 +197,31 @@ public class DialogueUI : MonoBehaviour
     private bool IsControlTag(string tag)
     {
         return tag.StartsWith("<wait=") || tag.StartsWith("<speed=");
+    }
+    public DialoguePlayer dialoguePlayer;
+    /// <summary>
+    /// 每幀執行一次，這裡用來偵測按鍵輸入（測試用）
+    /// 正式版可用 UI 按鈕代替
+    /// </summary>
+    private void Update()
+    {
+        if (!UIManager.Instance.IsCurrent(UIType.Gaming)) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            dialoguePlayer.Continue();
+        }
+    }
+    public SaveLoadUI saveLoadUI;
+    public void OnSaveClicked()
+    {
+        saveLoadUI.SetReturnTarget(UIType.Gaming);
+        saveLoadUI.Show(SaveLoadUI.Mode.Save);
+    }
+
+    public void OnLoadClicked()
+    {
+        saveLoadUI.SetReturnTarget(UIType.Gaming);
+        saveLoadUI.Show(SaveLoadUI.Mode.Load);
     }
 }

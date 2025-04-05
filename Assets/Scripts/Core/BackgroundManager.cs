@@ -12,6 +12,7 @@ public class BackgroundManager : MonoBehaviour
 
     public void ChangeBackground(string key)
     {
+        //Debug.Log("ChangeBackground");
         Sprite target = database.GetBackgroundByKey(key);
         if (target == null) return;
 

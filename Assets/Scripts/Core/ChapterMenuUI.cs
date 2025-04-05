@@ -25,15 +25,17 @@ public class ChapterMenuUI : MonoBehaviour
 
             btn.onClick.AddListener(() =>
             {
-                // 關閉章節選單面板
-                chapterMenuPanel.SetActive(false);
-
-                // 顯示對話面板
-                dialoguePanel.SetActive(true);
-
-                // 播放該章節的第一段對話
+                UIManager.Instance.ShowUI(UIType.Gaming);
                 dialoguePlayer.PlaySequence(chapter.startingSequence);
             });
         }
+        GameObject returnButton = Instantiate(buttonPrefab, buttonParent);
+        var rebtn = returnButton.GetComponent<Button>();
+        // 設定按鈕文字
+        rebtn.GetComponentInChildren<Text>().text = "回主選單";
+        rebtn.onClick.AddListener(() =>
+        {
+            UIManager.Instance.ShowUI(UIType.MainMenu);
+        });
     }
 }
