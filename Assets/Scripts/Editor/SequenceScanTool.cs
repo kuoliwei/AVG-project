@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.AddressableAssets;
 
 /// <summary>
 /// 編輯器工具：掃描所有 DialogueSequence，並自動建立 SequenceIndex
@@ -112,19 +113,48 @@ public class SequenceScanTool : EditorWindow
                 }
 
                 // 若角色有指定立繪資料庫，則檢查該 key 是否存在
-                if (line.speaker != null && line.speaker.portraitDatabase != null)
+                // === 修改區：改為從 Addressables Group 中查找對應立繪 key ===
+                if (line.speaker != null &&
+                    !string.IsNullOrEmpty(line.charactersPortraitsKeyOverride) &&
+                    line.charactersPortraitsKeyOverride != "none")
                 {
-                    if (!string.IsNullOrEmpty(line.charactersPortraitsKeyOverride) && line.charactersPortraitsKeyOverride != "none")
-                    {
-                        bool found = line.speaker.portraitDatabase.CharactersPortraits
-                            .Any(p => p.key == line.charactersPortraitsKeyOverride);
+                    string groupName = line.speaker.portraitGroup;
 
-                        if (!found)
+                    // 檢查是否指定了有效的 portraitGroup
+                    if (!string.IsNullOrEmpty(groupName))
+                    {
+                        var settings = AddressableAssetSettingsDefaultObject.Settings;
+                        if (settings != null)
                         {
-                            validationLogs.Add($"[{seq.name}] 第 {i + 1} 行：角色「{line.speaker.characterName}」無此立繪 key「{line.charactersPortraitsKeyOverride}」");
+                            var group = settings.groups.FirstOrDefault(g => g != null && g.Name == groupName);
+                            if (group != null)
+                            {
+                                bool found = group.entries.Any(e => e.address == line.charactersPortraitsKeyOverride);
+                                if (!found)
+                                {
+                                    validationLogs.Add($"[{seq.name}] 第 {i + 1} 行：角色「{line.speaker.characterName}」在 Group「{groupName}」中找不到立繪 key「{line.charactersPortraitsKeyOverride}」");
+                                }
+                            }
+                            else
+                            {
+                                validationLogs.Add($"[{seq.name}] 第 {i + 1} 行：角色「{line.speaker.characterName}」指定的 Group「{groupName}」不存在於 Addressables");
+                            }
                         }
                     }
                 }
+                //if (line.speaker != null && line.speaker.portraitDatabase != null)
+                //{
+                //    if (!string.IsNullOrEmpty(line.charactersPortraitsKeyOverride) && line.charactersPortraitsKeyOverride != "none")
+                //    {
+                //        bool found = line.speaker.portraitDatabase.CharactersPortraits
+                //            .Any(p => p.key == line.charactersPortraitsKeyOverride);
+
+                //        if (!found)
+                //        {
+                //            validationLogs.Add($"[{seq.name}] 第 {i + 1} 行：角色「{line.speaker.characterName}」無此立繪 key「{line.charactersPortraitsKeyOverride}」");
+                //        }
+                //    }
+                //}
             }
         }
     }

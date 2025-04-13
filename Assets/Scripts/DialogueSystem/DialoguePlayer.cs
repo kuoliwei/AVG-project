@@ -52,6 +52,7 @@ public class DialoguePlayer : MonoBehaviour
     [Header("Console Output")]
     public bool autoPrintToConsole = true;
     private string currentBackgroundKey;
+    [SerializeField] private DialogueUIAnimator uiAnimator;
     /// <summary>
     /// 啟動播放指定的對話序列
     /// 此為對外介面（例如由 UI 呼叫）
@@ -78,6 +79,10 @@ public class DialoguePlayer : MonoBehaviour
         {
             backgroundManager.ChangeBackground(currentSequence.backgroundKey);
             currentBackgroundKey = currentSequence.backgroundKey;
+        }
+        if (uiAnimator != null)
+        {
+            uiAnimator.ShowDialoguePanel(); // 第一句時滑入對話面板
         }
         // 等待指定時間後開始第一句
         StartCoroutine(DelayedPlay(currentSequence.sequenceStartDelay, PlayNextLine));
@@ -125,7 +130,6 @@ public class DialoguePlayer : MonoBehaviour
             backgroundManager.ChangeBackground(currentSequence.backgroundKey);
             currentBackgroundKey = currentSequence.backgroundKey;
         }
-
         // 原本播放邏輯不變...
         // 角色立繪控制
         if (dualCGController != null && line.speaker != null)
@@ -182,6 +186,12 @@ public class DialoguePlayer : MonoBehaviour
     /// </summary>
     private void EndSequence()
     {
+        // --- 新增：播放完後若有指定要解鎖的章節，立即解鎖 ---
+        if (currentSequence != null &&
+            !string.IsNullOrEmpty(currentSequence.unlockChapterIdAfterPlay))
+        {
+            ChapterProgress.Instance.UnlockChapter(currentSequence.unlockChapterIdAfterPlay);
+        }
         if (dialogueUI != null)
             dialogueUI.Clear();
         // 若這段劇情有設定後續分支選項
@@ -207,11 +217,15 @@ public class DialoguePlayer : MonoBehaviour
         }
         else
         {
+            if (uiAnimator != null)
+            {
+                uiAnimator.HideDialoguePanel(); // 播放完滑出面板
+            }
+
             // 沒有分支，對話流程正式結束
             currentState = DialogueState.Idle;
             Debug.Log("Dialogue sequence finished.");
         }
-
     }
     /// <summary>
     /// 當玩家從 UI 中選擇某個選項時，由外部呼叫此方法
@@ -249,5 +263,14 @@ public class DialoguePlayer : MonoBehaviour
             currentLineIndex = lineIndex;
             PlayNextLine();
         }
+    }
+    public void Stop()
+    {
+        currentState = DialogueState.Idle;
+        currentSequence = null;
+        currentLineIndex = 0;
+
+        if (dialogueUI != null) dialogueUI.Clear();
+        if (optionUI != null) optionUI.ClearOptions();
     }
 }

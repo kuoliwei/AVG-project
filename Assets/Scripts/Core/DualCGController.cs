@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,45 +18,39 @@ public class DualCGController : MonoBehaviour
     /// <summary>
     /// 顯示一個角色立繪，並根據其站位與是否為說話者設定圖像與亮度
     /// </summary>
-    public void ShowCharacter(DialogueCharacter character, bool isSpeaking, CharacterPosition position, string portraitKey)
+    public async void ShowCharacter(DialogueCharacter character, bool isSpeaking, CharacterPosition position, string portraitKey)
     {
         if (character == null) return;
 
         Image target = position == CharacterPosition.Left ? leftImage : rightImage;
-        if (target != null)
+        if (target == null) return;
+
+        // 非同步載入 Addressables 的立繪圖
+        var handle = UnityEngine.AddressableAssets.Addressables.LoadAssetAsync<Sprite>(portraitKey);
+        await handle.Task;
+
+        if (handle.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
         {
+            target.sprite = handle.Result;
             target.enabled = true;
-            target.sprite = character.portraitDatabase.GetCharactersPortraitByKey(portraitKey);
-            SetAlpha(target, isSpeaking ? normalAlpha : dimAlpha);
+            target.color = new Color(1, 1, 1, 0); // 初始為透明
+            target.DOFade(isSpeaking ? normalAlpha : dimAlpha, 0.5f); // 淡入
         }
+        else
+        {
+            Debug.LogError($"載入立繪失敗：{portraitKey}");
+        }
+        //if (character == null) return;
+        //Image target = position == CharacterPosition.Left ? leftImage : rightImage;
+        //if (target != null)
+        //{
+        //    target.enabled = true;
+        //    target.sprite = character.portraitDatabase.GetCharactersPortraitByKey(portraitKey);
+        //    target.color = new Color(1, 1, 1, 0); // 起始透明
+        //    target.DOFade(isSpeaking ? normalAlpha : dimAlpha, 0.5f);
+        //    //SetAlpha(target, isSpeaking ? normalAlpha : dimAlpha);
+        //}
     }
-
-    /// <summary>
-    /// 設定指定角色是否高亮（說話）
-    /// </summary>
-    //public void SetSpeaking(DialogueCharacter character)
-    //{
-    //    if (character == null) return;
-
-    //    if (leftImage != null)
-    //    {
-    //        SetAlpha(leftImage, ShouldHighlight(character, CharacterPosition.Left) ? normalAlpha : dimAlpha);
-    //    }
-
-    //    if (rightImage != null)
-    //    {
-    //        SetAlpha(rightImage, ShouldHighlight(character, CharacterPosition.Right) ? normalAlpha : dimAlpha);
-    //    }
-    //}
-
-    /// <summary>
-    /// 是否為說話者
-    /// </summary>
-    //private bool ShouldHighlight(DialogueCharacter speaker, CharacterPosition side)
-    //{
-    //    return speaker.defaultPosition == side;
-    //}
-
     /// <summary>
     /// 設定透明度
     /// </summary>

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequenceName: inviteeaticetogother
   backgroundKey: "\u4F4F\u5B85\u5340\u8857\u9053"
-  backgroundDatabase: {fileID: 11400000, guid: 1ee3cc2c695693445918385ca9712304, type: 2}
   sequenceStartDelay: 1
   lines:
   - speaker: {fileID: 11400000, guid: 6faff0530bf9a1446aacf9ab9dcb7f17, type: 2}
@@ -28,7 +27,7 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
     content: "<speed=0.5><b><color=#ff0000>\u7B28\u86CB!</color></b><speed=0.15>\n<wait=0.5>\u6211\u5011\u9084\u6C92\u9019\u9EBC\u719F"
     position: 1
-    charactersPortraitsKeyOverride: angry and shy
+    charactersPortraitsKeyOverride: Alice_angry_and_shy
     voiceClip: {fileID: 0}
     backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
@@ -36,9 +35,11 @@ MonoBehaviour:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
     content: "\u4EE5\u5F8C...<wait=1>\u518D\u7D04\u6211\u5427"
     position: 1
-    charactersPortraitsKeyOverride: shy
+    charactersPortraitsKeyOverride: Alice_shy
     voiceClip: {fileID: 0}
     backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
+  chapterList: {fileID: 0}
   branchAfterSequence: {fileID: 0}
+  unlockChapterIdAfterPlay: 

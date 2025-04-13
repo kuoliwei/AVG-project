@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb25db7eadd1204ab065b0f457cf98c, type: 3}
   m_Name: Chapter2
   m_EditorClassIdentifier: 
+  chapterId: chapter_2
   chapterTitle: "\u56DE\u5BB6\u8DEF\u4E0A"
   startingSequence: {fileID: 11400000, guid: ae19319972ec1db40a36f33800f23a47, type: 2}

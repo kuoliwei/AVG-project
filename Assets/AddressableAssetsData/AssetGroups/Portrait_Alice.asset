@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Portrait_Alice
+  m_EditorClassIdentifier: 
+  m_GroupName: Portrait_Alice
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 50630fc4bf59c0244bb5e638260907ea
+  m_SerializeEntries:
+  - m_GUID: 595a66a1219a25644baf7568b479d58c
+    m_Address: Alice_angry_and_shy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d5cb52f1aacc50044b878a9df64cadf7
+    m_Address: Alice_shy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e55c280273daf6f4f95f454e8265a3bb
+    m_Address: Alice_normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9cc048100bed89a40a78e5ee2bd4b2ac, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 813a297688cafe44997eecdf11824a8b, type: 2}
+    - {fileID: 11400000, guid: 66935e743db61a04088dce19a2cb84e1, type: 2}

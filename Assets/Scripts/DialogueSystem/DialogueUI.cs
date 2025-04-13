@@ -22,7 +22,14 @@ public class DialogueUI : MonoBehaviour
 
     [Header("設定")]
     public float charInterval = 0.05f;     // 每個字的間隔秒數
+    public void OnReturnToMainMenu()
+    {
+        // 清空目前劇情
+        dialoguePlayer.Stop(); // 如果你有 Stop 功能（可選）
 
+        // 切換回主選單
+        UIManager.Instance.ShowUI(UIType.MainMenu);
+    }
     /// <summary>
     /// 顯示對話內容
     /// </summary>

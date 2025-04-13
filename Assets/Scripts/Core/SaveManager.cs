@@ -1,7 +1,7 @@
 using UnityEngine;               // 引用 UnityEngine 核心函式庫
 using System.IO;                 // 使用 File 類別來操作檔案（儲存與讀取）
 using System.Collections.Generic; // 使用 List 與泛型功能
-
+using Newtonsoft.Json; // 引用 Json.NET 功能
 /// <summary>
 /// SaveManager 控制遊戲進度的儲存與讀取，採用 Singleton 設計模式
 /// 支援多個存檔槽，並且可跨場景使用
@@ -61,8 +61,11 @@ public class SaveManager : MonoBehaviour
             savedAt = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") // 取得目前時間
         };
 
-        // 將 SaveData 物件轉為 JSON 字串（美化格式 true）
-        string json = JsonUtility.ToJson(data, true);
+        //// 將 SaveData 物件轉為 JSON 字串（美化格式 true）
+        //string json = JsonUtility.ToJson(data, true);
+
+        // 使用 Json.NET 轉成格式化 JSON 字串（取代 JsonUtility）
+        string json = JsonConvert.SerializeObject(data, Formatting.Indented);
 
         // 將 JSON 字串寫入指定的檔案路徑
         File.WriteAllText(GetSlotPath(slot), json);
@@ -90,8 +93,11 @@ public class SaveManager : MonoBehaviour
         // 讀取整份 JSON 檔案
         string json = File.ReadAllText(path);
 
-        // 將 JSON 字串轉回 SaveData 物件
-        return JsonUtility.FromJson<SaveData>(json);
+        //// 將 JSON 字串轉回 SaveData 物件
+        //return JsonUtility.FromJson<SaveData>(json);
+
+        // 使用 Json.NET 反序列化
+        return JsonConvert.DeserializeObject<SaveData>(json);
     }
     /// <summary>
     /// 刪除指定槽位的存檔

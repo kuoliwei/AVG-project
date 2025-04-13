@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject chapterMenuPanel;
     public GameObject saveLoadPanel;
+    [Header("功能控制元件")]
+    public ChapterMenuUI chapterMenuUI;    // <-- 連結 ChapterMenuUI 腳本（新增）
 
     public UIType CurrentUI { get; private set; } = UIType.None;
 
@@ -31,7 +33,9 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
     }
-
+    /// <summary>
+    /// 顯示指定 UI 面板，並隱藏其他面板
+    /// </summary>
     public void ShowUI(UIType ui)
     {
         // 全部關閉
@@ -48,6 +52,12 @@ public class UIManager : MonoBehaviour
                 break;
             case UIType.ChapterMenu:
                 chapterMenuPanel.SetActive(true);
+                // 每次顯示章節面板時，刷新解鎖狀態
+                if (chapterMenuUI != null)
+                {
+                    chapterMenuUI.RefreshUI();
+                    Debug.Log("RefreshUI by reopen chapterMenuPanel");
+                }
                 break;
             case UIType.Gaming:
                 gamePanel.SetActive(true);
@@ -59,7 +69,9 @@ public class UIManager : MonoBehaviour
 
         CurrentUI = ui;
     }
-
+    /// <summary>
+    /// 判斷目前顯示中的 UI 是否為指定類型
+    /// </summary>
     public bool IsCurrent(UIType ui)
     {
         return CurrentUI == ui;

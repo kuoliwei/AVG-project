@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequenceName: onthewathome
   backgroundKey: "\u4F4F\u5B85\u5340\u8857\u9053"
-  backgroundDatabase: {fileID: 11400000, guid: 1ee3cc2c695693445918385ca9712304, type: 2}
   sequenceStartDelay: 1
   lines:
   - speaker: {fileID: 11400000, guid: a07b018b4383e1242bdda96c12c13e68, type: 2}
     content: "\u90A3\u500B\uFF0C<wait=1>\u4F60\u5BB6\u4F4F\u54EA\u88E1\u5462?"
     position: 1
-    charactersPortraitsKeyOverride: shy
+    charactersPortraitsKeyOverride: Alice_shy
     voiceClip: {fileID: 0}
     backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
@@ -33,4 +32,6 @@ MonoBehaviour:
     backgroundKeyOverride: none
     clearCharacterCGBeforeLine: 0
     lineStartDelay: 1
+  chapterList: {fileID: 0}
   branchAfterSequence: {fileID: 11400000, guid: e348c61389713f4469d7a94147c0ce5e, type: 2}
+  unlockChapterIdAfterPlay: 

@@ -13,7 +13,7 @@ public class DialogueOptionUI : MonoBehaviour
     public Transform optionContainer;     // 放選項按鈕的容器（通常就是 OptionPanel）
 
     private List<GameObject> currentButtons = new List<GameObject>();
-
+    public DialogueUIAnimator uiAnimator; // 從外部注入
     /// <summary>
     /// 顯示多個選項按鈕
     /// </summary>
@@ -26,12 +26,17 @@ public class DialogueOptionUI : MonoBehaviour
             questionText.text = branch.question;
             questionText.transform.parent.gameObject.SetActive(true);
         }
-        foreach (var option in branch.options)
+        for (int i = 0; i < branch.options.Count; i++)
         {
             GameObject buttonObj = Instantiate(optionButtonPrefab, optionContainer);
             var btn = buttonObj.GetComponent<DialogueOptionButton>();
-            btn.Setup(option, onOptionSelected);
+            btn.Setup(branch.options[i], onOptionSelected);
             currentButtons.Add(buttonObj);
+
+            if (uiAnimator != null)
+            {
+                uiAnimator.PrepareOptionButton(buttonObj, i); // 實作彈出 + Hover 動畫註冊
+            }
         }
     }
 

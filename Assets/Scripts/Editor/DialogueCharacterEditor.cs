@@ -2,7 +2,9 @@
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
-
+using System.Collections.Generic;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 /// <summary>
 /// 自訂 Inspector，讓 DialogueCharacter 的 defaultPortraitKey 顯示成下拉選單
 /// </summary>
@@ -21,35 +23,93 @@ public class DialogueCharacterEditor : Editor
         // 顯示名稱顏色的色彩選擇器（Color Picker）
         character.nameColor = EditorGUILayout.ColorField("Name Color", character.nameColor);
 
-        // 顯示 Portrait Database 的 Object 欄位（可拖拉 ScriptableObject 進來）
-        character.portraitDatabase = (CharactersPortraitDatabase)EditorGUILayout.ObjectField(
-            "Portrait Database",                     // 欄位名稱
-            character.portraitDatabase,              // 目前的值
-            typeof(CharactersPortraitDatabase),      // 限定類型
-            false                                    // 不允許拖場景物件（只允許資產）
-        );
+        // === 修改區開始：原本是 portraitDatabase，現在改成 portraitGroup（字串） ===
 
-        // 如果已經指定了 portraitDatabase，就從中抓出所有 key，做出下拉選單
-        if (character.portraitDatabase != null)
+        EditorGUILayout.LabelField("Portrait Group", EditorStyles.boldLabel);
+
+        var settings = AddressableAssetSettingsDefaultObject.Settings;
+        if (settings != null)
         {
-            // 把資料庫中的 key 取出，變成一個 List<string>
-            var keys = character.portraitDatabase.CharactersPortraits.Select(p => p.key).ToList();
+            // 過濾出所有以 Portrait_ 開頭的 Group 名稱（代表角色立繪群組）
+            var groupNames = settings.groups
+                .Where(g => g != null && g.Name.StartsWith("Portrait_"))
+                .Select(g => g.Name)
+                .ToList();
 
-            // 根據當前 defaultPortraitKey 找到對應的索引值
-            int selectedIndex = Mathf.Max(0, keys.IndexOf(character.defaultPortraitKey));
+            if (groupNames.Count > 0)
+            {
+                //groupNames.Insert(0, "none"); // 插入 "none" 代表未選擇
 
-            // 顯示下拉式選單，讓使用者選擇其中一個 key
-            selectedIndex = EditorGUILayout.Popup("Default Portrait Key", selectedIndex, keys.ToArray());
+                int selectedGroupIndex = Mathf.Max(0, groupNames.IndexOf(character.portraitGroup));
+                selectedGroupIndex = EditorGUILayout.Popup("Portrait Group", selectedGroupIndex, groupNames.ToArray());
 
-            // 更新角色的 defaultPortraitKey 值為選中的 key
-            if (selectedIndex >= 0 && selectedIndex < keys.Count)
-                character.defaultPortraitKey = keys[selectedIndex];
+                // 更新選擇的 Group 名稱
+                if (selectedGroupIndex >= 0 && selectedGroupIndex < groupNames.Count)
+                    character.portraitGroup = groupNames[selectedGroupIndex];
+
+                // 如果使用者有選定 Group，就載入該 Group 中的所有 Addressables key
+                if (character.portraitGroup != "none")
+                {
+                    var group = settings.groups.FirstOrDefault(g => g.Name == character.portraitGroup);
+                    if (group != null)
+                    {
+                        List<string> keys = group.entries.Select(e => e.address).ToList();
+                        keys.Insert(0, "none");
+
+                        int selectedKeyIndex = Mathf.Max(0, keys.IndexOf(character.defaultPortraitKey));
+                        selectedKeyIndex = EditorGUILayout.Popup("Default Portrait Key", selectedKeyIndex, keys.ToArray());
+
+                        if (selectedKeyIndex >= 0 && selectedKeyIndex < keys.Count)
+                            character.defaultPortraitKey = keys[selectedKeyIndex];
+                    }
+                }
+                else
+                {
+                    // 如果沒選 Group，就允許自由輸入 key
+                    character.defaultPortraitKey = EditorGUILayout.TextField("Default Portrait Key", character.defaultPortraitKey);
+                }
+            }
+            else
+            {
+                EditorGUILayout.HelpBox("找不到任何名稱以 Portrait_ 開頭的 Addressable Group。", MessageType.Warning);
+            }
         }
         else
         {
-            // 如果沒有資料庫，就顯示為一般文字輸入欄位
-            character.defaultPortraitKey = EditorGUILayout.TextField("Default Portrait Key", character.defaultPortraitKey);
+            EditorGUILayout.HelpBox("找不到 Addressables 設定，請先建立 Addressables Group。", MessageType.Warning);
         }
+
+        // === 修改區結束 ===
+
+        //// 顯示 Portrait Database 的 Object 欄位（可拖拉 ScriptableObject 進來）
+        //character.portraitDatabase = (CharactersPortraitDatabase)EditorGUILayout.ObjectField(
+        //    "Portrait Database",                     // 欄位名稱
+        //    character.portraitDatabase,              // 目前的值
+        //    typeof(CharactersPortraitDatabase),      // 限定類型
+        //    false                                    // 不允許拖場景物件（只允許資產）
+        //);
+
+        //// 如果已經指定了 portraitDatabase，就從中抓出所有 key，做出下拉選單
+        //if (character.portraitDatabase != null)
+        //{
+        //    // 把資料庫中的 key 取出，變成一個 List<string>
+        //    var keys = character.portraitDatabase.CharactersPortraits.Select(p => p.key).ToList();
+
+        //    // 根據當前 defaultPortraitKey 找到對應的索引值
+        //    int selectedIndex = Mathf.Max(0, keys.IndexOf(character.defaultPortraitKey));
+
+        //    // 顯示下拉式選單，讓使用者選擇其中一個 key
+        //    selectedIndex = EditorGUILayout.Popup("Default Portrait Key", selectedIndex, keys.ToArray());
+
+        //    // 更新角色的 defaultPortraitKey 值為選中的 key
+        //    if (selectedIndex >= 0 && selectedIndex < keys.Count)
+        //        character.defaultPortraitKey = keys[selectedIndex];
+        //}
+        //else
+        //{
+        //    // 如果沒有資料庫，就顯示為一般文字輸入欄位
+        //    character.defaultPortraitKey = EditorGUILayout.TextField("Default Portrait Key", character.defaultPortraitKey);
+        //}
 
         // 如果有修改任何欄位，標記資料為已變更，讓 Unity 儲存它
         if (GUI.changed)

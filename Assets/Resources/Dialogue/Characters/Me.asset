@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Me
   m_EditorClassIdentifier: 
   characterName: "\u6211"
-  defaultPortraitKey: normal
-  portraitDatabase: {fileID: 11400000, guid: b8685443ab9a52d4c87b6b14dcb2feb3, type: 2}
   nameColor: {r: 1, g: 1, b: 1, a: 1}
+  portraitGroup: Portrait_Me
+  defaultPortraitKey: Me_normal
